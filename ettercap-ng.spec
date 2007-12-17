@@ -9,7 +9,6 @@ Release: %{release}
 Source:  http://ettercap.sourceforge.net/download/ettercap-NG-%{version}.tar.bz2
 License: GPL 
 Group: Networking/Other
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:        http://ettercap.sourceforge.net/
 BuildRequires: openssl-devel
 Buildrequires: ncurses-devel
