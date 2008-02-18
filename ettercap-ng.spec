@@ -2,7 +2,7 @@
 %define version 0.7.3
 %define release %mkrel 1
 
-Summary: Ettercap is a ncurses/Gtk2 based sniffer/interceptor utility
+Summary: Ncurses/Gtk2 based sniffer/interceptor utility
 Name: %{name}
 Version: %{version}
 Release: %{release}
