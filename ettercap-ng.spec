@@ -1,6 +1,6 @@
 %define name ettercap-ng
 %define version 0.7.3
-%define release %mkrel 2
+%define release %mkrel 4
 
 Summary: Ncurses/Gtk2 based sniffer/interceptor utility
 Name: %{name}
