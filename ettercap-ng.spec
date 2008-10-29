@@ -1,15 +1,18 @@
-%define name ettercap-ng
-%define version 0.7.3
-%define release %mkrel 5
+%define _disable_ld_as_needed 1
+%define _disable_ld_no_undefined 1
 
 Summary: Ncurses/Gtk2 based sniffer/interceptor utility
-Name: %{name}
-Version: %{version}
-Release: %{release}
+Name: ettercap-ng
+Version: 0.7.3
+Release: %mkrel 5
 Source:  http://ettercap.sourceforge.net/download/ettercap-NG-%{version}.tar.bz2
+Patch0: ettercap-NG-0.7.3-UI.patch
+Patch1: ettercap-NG-0.7.3-ec_log.patch
+Patch2: ettercap-NG-0.7.3-daemon-ui.patch
+Patch3: ettercap-NG-0.7.3-daemon-textmode.patch
+Patch4: ettercap-NG-0.7.3-mitm-loop.patch
 License: GPL 
 Group: Networking/Other
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:        http://ettercap.sourceforge.net/
 BuildRequires: openssl-devel
 Buildrequires: ncurses-devel
@@ -20,13 +23,13 @@ BuildRequires:	libtool-devel
 BuildRequires:	flex
 BuildRequires:	bison
 BuildRequires:	libpcap-devel
-
 Provides: ettercap = %version-%release
 # for compatibility
 Provides: ettercap-NG = %version-%release
 Obsoletes: ettercap < %version-%release
 Obsoletes:	%mklibname %name 0
 Provides:	%mklibname %name 0
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Ettercap is a network sniffer/interceptor/logger for ethernet 
@@ -45,12 +48,18 @@ type of the host (gateway, router or simple host) and
 extimated distance in hop.
 
 %prep
+
 %setup -q -n ettercap-NG-%{version}
+%patch0 -p1
+%patch1 -p0
+%patch2 -p0
+%patch3 -p0
+%patch4 -p0
 
 %build
 
-aclocal
 libtoolize --copy --force
+aclocal
 automake -a || :
 autoconf
 
@@ -64,6 +73,7 @@ autoconf
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %makeinstall_std
 
 rm -fr $RPM_BUILD_ROOT/%_datadir/doc
@@ -79,5 +89,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %{_datadir}/ettercap
 %{_libexecdir}/ettercap
-
-
