@@ -1,16 +1,14 @@
-%define _disable_ld_as_needed 1
-%define _disable_ld_no_undefined 1
-
 Summary: Ncurses/Gtk2 based sniffer/interceptor utility
 Name: ettercap-ng
 Version: 0.7.3
-Release: %mkrel 5
+Release: %mkrel 6
 Source:  http://ettercap.sourceforge.net/download/ettercap-NG-%{version}.tar.bz2
 Patch0: ettercap-NG-0.7.3-UI.patch
 Patch1: ettercap-NG-0.7.3-ec_log.patch
 Patch2: ettercap-NG-0.7.3-daemon-ui.patch
 Patch3: ettercap-NG-0.7.3-daemon-textmode.patch
 Patch4: ettercap-NG-0.7.3-mitm-loop.patch
+Patch5: ettercap-NG-0.7.3-linkage.patch
 License: GPL 
 Group: Networking/Other
 URL:        http://ettercap.sourceforge.net/
@@ -55,18 +53,15 @@ extimated distance in hop.
 %patch2 -p0
 %patch3 -p0
 %patch4 -p0
+%patch5 -p0 -b .link
 
 %build
-
-libtoolize --copy --force
-aclocal
-automake -a || :
-autoconf
-
 %configure2_5x \
 	--disable-debug \
 	--with-openssl=%{_prefix} \
 	--enable-gtk \
+	--without-included-ltdl \
+	--disable-ltdl-install \
 	--enable-plugins
 %make
 %make plug-ins
