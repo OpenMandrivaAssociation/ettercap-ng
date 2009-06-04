@@ -1,7 +1,7 @@
 Summary: Ncurses/Gtk2 based sniffer/interceptor utility
 Name: ettercap-ng
 Version: 0.7.3
-Release: %mkrel 6
+Release: %mkrel 7
 Source:  http://ettercap.sourceforge.net/download/ettercap-NG-%{version}.tar.bz2
 Patch0: ettercap-NG-0.7.3-UI.patch
 Patch1: ettercap-NG-0.7.3-ec_log.patch
@@ -16,7 +16,7 @@ BuildRequires: openssl-devel
 Buildrequires: ncurses-devel
 BuildRequires: gtk+2-devel
 BuildRequires: pcre-devel
-BuildRequires: libnet1.1.2-devel
+BuildRequires:	net-devel >= 1.1.3
 BuildRequires:	libtool-devel
 BuildRequires:	flex
 BuildRequires:	bison
