@@ -1,7 +1,7 @@
 Summary: Ncurses/Gtk2 based sniffer/interceptor utility
 Name: ettercap-ng
 Version: 0.7.3
-Release: %mkrel 7
+Release: %mkrel 8
 Source:  http://ettercap.sourceforge.net/download/ettercap-NG-%{version}.tar.bz2
 Patch0: ettercap-NG-0.7.3-UI.patch
 Patch1: ettercap-NG-0.7.3-ec_log.patch
