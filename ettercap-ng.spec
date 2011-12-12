@@ -1,8 +1,8 @@
 Summary: Ncurses/Gtk2 based sniffer/interceptor utility
 Name: ettercap-ng
-Version: 0.7.3
-Release: %mkrel 9
-Source:  http://ettercap.sourceforge.net/download/ettercap-NG-%{version}.tar.bz2
+Version: 0.7.4
+Release: 1
+Source:  http://ettercap.sourceforge.net/download/ettercap-%{version}.tar.gz
 Patch0: ettercap-NG-0.7.3-UI.patch
 Patch1: ettercap-NG-0.7.3-ec_log.patch
 Patch2: ettercap-NG-0.7.3-daemon-ui.patch
@@ -46,16 +46,17 @@ type of the host (gateway, router or simple host) and
 extimated distance in hop.
 
 %prep
-
-%setup -q -n ettercap-NG-%{version}
+%setup -q -n ettercap
 %patch0 -p1
-%patch1 -p0
+#%patch1 -p0
 %patch2 -p0
 %patch3 -p0
 %patch4 -p0
-%patch5 -p0 -b .link
+%patch5 -p1 -b .link
 
 %build
+autoreconf -fi
+libtoolize --copy --force
 %configure2_5x \
 	--disable-debug \
 	--with-openssl=%{_prefix} \
@@ -67,14 +68,7 @@ extimated distance in hop.
 %make plug-ins
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 %makeinstall_std
-
-rm -fr $RPM_BUILD_ROOT/%_datadir/doc
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
