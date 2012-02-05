@@ -1,6 +1,6 @@
 Summary: Ncurses/Gtk2 based sniffer/interceptor utility
 Name: ettercap-ng
-Version: 0.7.4
+Version: 0.7.4.1
 Release: 1
 Source:  http://ettercap.sourceforge.net/download/ettercap-%{version}.tar.gz
 Patch0: ettercap-NG-0.7.3-UI.patch
@@ -27,7 +27,6 @@ Provides: ettercap-NG = %version-%release
 Obsoletes: ettercap < %version-%release
 Obsoletes:	%mklibname %name 0
 Provides:	%mklibname %name 0
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Ettercap is a network sniffer/interceptor/logger for ethernet 
@@ -71,7 +70,6 @@ libtoolize --copy --force
 %makeinstall_std
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS CHANGELOG INSTALL LICENSE README* THANKS TODO TODO.TESTING doc/*
 %config(noreplace) %_sysconfdir/etter.conf
 %{_mandir}/man?/*
