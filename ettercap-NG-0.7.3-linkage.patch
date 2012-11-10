@@ -1,0 +1,53 @@
+diff --git a/acinclude.m4 b/acinclude.m4
+index f7d3b6a..713c212 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -51,7 +51,7 @@ AC_DEFUN([EC_PTHREAD_CHECK],
+    elif test "$OS" = "MACOSX"; then
+       AC_MSG_CHECKING(whether $CC accepts -pthread)
+       LDFLAGS_store="$LDFLAGS"
+-      LDFLAGS="$LDFLAGS -pthread -fnested-functions"
++      LIBS="$LIBS -pthread -fnested-functions"
+       AC_TRY_LINK([
+          #include <pthread.h>
+          ],
+diff --git a/configure b/configure
+index 641a6db..ab41b6e 100755
+--- a/configure
++++ b/configure
+@@ -15380,6 +15380,7 @@ fi
+ $as_echo_n "checking whether $CC accepts -pthread... " >&6; }
+       LDFLAGS_store="$LDFLAGS"
+       LDFLAGS="$LDFLAGS -pthread -fnested-functions"
++      LIBS="$LIBS -pthread -fnested-functions"
+       cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 20ce798..5e37c18 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -141,7 +141,8 @@ if GTK
+ ettercap_LDADD += interfaces/gtk/libec_gtk.a
+ endif
+ 
+-ettercap_LDFLAGS = -export-dynamic @EC_LIBS@ 
++ettercap_LDFLAGS = -export-dynamic
++ettercap_LDADD += @EC_LIBS@
+ 
+ CLEANFILES = *.log *.out core* missing/*.o *~
+ 
+diff --git a/src/Makefile.in b/src/Makefile.in
+index c4ce473..fa13caf 100644
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -432,7 +432,8 @@ ettercap_CFLAGS = @EC_CFLAGS@
+ ettercap_LDADD = @LIBOBJS@ os/libec_os.a \
+ 	interfaces/daemon/libec_daemon.a interfaces/text/libec_text.a \
+ 	$(am__append_3) $(am__append_4)
+-ettercap_LDFLAGS = -export-dynamic @EC_LIBS@ 
++ettercap_LDFLAGS = -export-dynamic
++ettercap_LDADD += @EC_LIBS@
+ CLEANFILES = *.log *.out core* missing/*.o *~
+ all: all-recursive
+ 
