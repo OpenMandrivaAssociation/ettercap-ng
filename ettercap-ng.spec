@@ -76,3 +76,48 @@ libtoolize --copy --force
 %{_bindir}/*
 %{_datadir}/ettercap
 %{_libexecdir}/ettercap
+
+
+%changelog
+* Sun Feb 05 2012 Alexander Khrukin <akhrukin@mandriva.org> 0.7.4.1-1
++ Revision: 771303
+- version update 0.7.4.1
+- build fixes
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - rebuild
+
+* Wed Apr 21 2010 Funda Wang <fwang@mandriva.org> 0.7.3-8mdv2010.1
++ Revision: 537451
+- rebuild
+
+* Thu Jun 04 2009 Oden Eriksson <oeriksson@mandriva.com> 0.7.3-7mdv2010.0
++ Revision: 382717
+- rebuilt against libnet 1.1.3
+
+* Mon Feb 02 2009 Funda Wang <fwang@mandriva.org> 0.7.3-6mdv2009.1
++ Revision: 336422
+- fix linkage
+
+* Wed Oct 29 2008 Oden Eriksson <oeriksson@mandriva.com> 0.7.3-5mdv2009.1
++ Revision: 298542
+- sync with ettercap-0.7.3-26.fc10.src.rpm
+- use _disable_ld_as_needed and _disable_ld_no_undefined due
+  to old and ugly autopoo
+- rebuilt against libpcap-1.0.0
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+
+* Mon Feb 18 2008 Thierry Vignaud <tv@mandriva.org> 0.7.3-2mdv2008.1
++ Revision: 170821
+- rebuild
+- fix "foobar is blabla" summary (=> "blabla") so that it looks nice in rpmdrake
+
+* Fri Dec 21 2007 Olivier Blin <blino@mandriva.org> 0.7.3-1mdv2008.1
++ Revision: 136407
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
