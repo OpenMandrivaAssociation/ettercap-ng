@@ -11,7 +11,7 @@ Patch4: ettercap-NG-0.7.3-mitm-loop.patch
 Patch5: ettercap-NG-0.7.3-linkage.patch
 License: GPL 
 Group: Networking/Other
-URL:        http://ettercap.sourceforge.net/
+URL:        https://ettercap.sourceforge.net/
 BuildRequires: openssl-devel
 Buildrequires: ncurses-devel
 BuildRequires: gtk+2-devel
